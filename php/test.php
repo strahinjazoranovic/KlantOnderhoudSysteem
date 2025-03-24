@@ -1,15 +1,15 @@
 <?php
 
-$host = "127.0.0.1";
-$dbname = "keuzedeel_duo";
-$username = "root"; // Change if needed
-$password = ""; // Change if needed
+$host = 'localhost';
+$dbname = 'your_database';
+$username = 'your_username';
+$password = 'your_password';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
+    die("Connection failed: " . $e->getMessage());
 }
 
 // Function to add a customer
@@ -31,6 +31,34 @@ function getCustomerByEmail($email)
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
+// Function to get customer by ID
+function getCustomerById($customer_id)
+{
+    global $pdo;
+    $sql = "SELECT * FROM customers WHERE customer_id = :customer_id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['customer_id' => $customer_id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+// Function to update customer details
+function updateCustomer($customer_id, $name, $email, $phone)
+{
+    global $pdo;
+    $sql = "UPDATE customers SET name = :name, email = :email, phone = :phone WHERE customer_id = :customer_id";
+    $stmt = $pdo->prepare($sql);
+    return $stmt->execute(['name' => $name, 'email' => $email, 'phone' => $phone, 'customer_id' => $customer_id]);
+}
+
+// Function to delete a customer
+function deleteCustomer($customer_id)
+{
+    global $pdo;
+    $sql = "DELETE FROM customers WHERE customer_id = :customer_id";
+    $stmt = $pdo->prepare($sql);
+    return $stmt->execute(['customer_id' => $customer_id]);
+}
+
 // Function to place an order
 function placeOrder($customer_id, $total_amount)
 {
@@ -38,6 +66,44 @@ function placeOrder($customer_id, $total_amount)
     $sql = "INSERT INTO orders (customer_id, total_amount) VALUES (:customer_id, :total_amount)";
     $stmt = $pdo->prepare($sql);
     return $stmt->execute(['customer_id' => $customer_id, 'total_amount' => $total_amount]);
+}
+
+// Function to get all orders for a customer
+function getOrdersByCustomer($customer_id)
+{
+    global $pdo;
+    $sql = "SELECT * FROM orders WHERE customer_id = :customer_id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['customer_id' => $customer_id]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// Function to get order by ID
+function getOrderById($order_id)
+{
+    global $pdo;
+    $sql = "SELECT * FROM orders WHERE order_id = :order_id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['order_id' => $order_id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+// Function to update order status
+function updateOrderStatus($order_id, $status)
+{
+    global $pdo;
+    $sql = "UPDATE orders SET status = :status WHERE order_id = :order_id";
+    $stmt = $pdo->prepare($sql);
+    return $stmt->execute(['status' => $status, 'order_id' => $order_id]);
+}
+
+// Function to delete an order
+function deleteOrder($order_id)
+{
+    global $pdo;
+    $sql = "DELETE FROM orders WHERE order_id = :order_id";
+    $stmt = $pdo->prepare($sql);
+    return $stmt->execute(['order_id' => $order_id]);
 }
 
 // Example usage:
@@ -50,6 +116,6 @@ if ($customer) {
     echo "Customer Found: " . $customer['name'] . "<br>";
 
     if (placeOrder($customer['customer_id'], 99.99)) {
-        echo "Order placed successfully!";
+        echo "Order placed successfully!<br>";
     }
 }
