@@ -2,8 +2,8 @@
 
 $host = "127.0.0.1";
 $dbname = "keuzedeel_duo";
-$username = "root"; // Change if needed
-$password = ""; // Change if needed
+$username = "root";
+$password = "";
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
@@ -12,7 +12,6 @@ try {
     die("Database connection failed: " . $e->getMessage());
 }
 
-// Function to add a customer
 function addCustomer($name, $email, $phone)
 {
     global $pdo;
@@ -21,7 +20,6 @@ function addCustomer($name, $email, $phone)
     return $stmt->execute(['name' => $name, 'email' => $email, 'phone' => $phone]);
 }
 
-// Function to get customer by email
 function getCustomerByEmail($email)
 {
     global $pdo;
@@ -31,7 +29,6 @@ function getCustomerByEmail($email)
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-// Function to get customer by ID
 function getCustomerById($customer_id)
 {
     global $pdo;
@@ -41,7 +38,6 @@ function getCustomerById($customer_id)
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-// Function to update customer details
 function updateCustomer($customer_id, $name, $email, $phone)
 {
     global $pdo;
@@ -50,7 +46,6 @@ function updateCustomer($customer_id, $name, $email, $phone)
     return $stmt->execute(['name' => $name, 'email' => $email, 'phone' => $phone, 'customer_id' => $customer_id]);
 }
 
-// Function to delete a customer
 function deleteCustomer($customer_id)
 {
     global $pdo;
@@ -59,7 +54,6 @@ function deleteCustomer($customer_id)
     return $stmt->execute(['customer_id' => $customer_id]);
 }
 
-// Function to place an order
 function placeOrder($customer_id, $total_amount)
 {
     global $pdo;
@@ -68,7 +62,6 @@ function placeOrder($customer_id, $total_amount)
     return $stmt->execute(['customer_id' => $customer_id, 'total_amount' => $total_amount]);
 }
 
-// Function to get all orders for a customer
 function getOrdersByCustomer($customer_id)
 {
     global $pdo;
@@ -78,7 +71,6 @@ function getOrdersByCustomer($customer_id)
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-// Function to get order by ID
 function getOrderById($order_id)
 {
     global $pdo;
@@ -88,7 +80,6 @@ function getOrderById($order_id)
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-// Function to update order status
 function updateOrderStatus($order_id, $status)
 {
     global $pdo;
@@ -97,7 +88,6 @@ function updateOrderStatus($order_id, $status)
     return $stmt->execute(['status' => $status, 'order_id' => $order_id]);
 }
 
-// Function to delete an order
 function deleteOrder($order_id)
 {
     global $pdo;
@@ -106,7 +96,6 @@ function deleteOrder($order_id)
     return $stmt->execute(['order_id' => $order_id]);
 }
 
-// Example usage:
 if (addCustomer('John Doe', 'johndoe@example.com', '1234567890')) {
     echo "Customer added successfully!<br>";
 }
