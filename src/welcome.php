@@ -5,7 +5,7 @@
 //-- Naam ontwikkelaar: Strahinja Zoranovic
 //-- Project: KlantOnderHoudsysteem
 //-- Datum: 28/03/2025
-------------------------------------------------
+//------------------------------------------------
 session_start();
 require 'db.php';
 
