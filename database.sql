@@ -6,15 +6,13 @@
 -- Generation Time: Mar 28, 2025 at 11:14 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
-
 -----------------------------------------------
 -- Naam script: database.sql  
 -- Omschrijving: Dit is de code die wij hebben uitgevoerd om de database te maken
--- Naam ontwikkelaar: Jordan van Eijl
+-- Naam ontwikkelaar: JTnadrooi
 -- Project: KlantOnderHoudsysteem
 -- Datum: 28/03/2025
 ------------------------------------------------
-
 SET
   SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 

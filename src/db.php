@@ -2,7 +2,7 @@
 //-----------------------------------------------
 //-- Naam script: db.php
 //-- Omschrijving: Database connectie met alle gegevens 
-//-- Naam ontwikkelaar: Jordan van Eijl
+//-- Naam ontwikkelaar: JTnadrooi
 //-- Project: KlantOnderHoudsysteem
 //-- Datum: 28/03/2025
 //------------------------------------------------

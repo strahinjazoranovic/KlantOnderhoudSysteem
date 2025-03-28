@@ -2,7 +2,7 @@
 //-----------------------------------------------
 //-- Naam script: login.php
 //-- Omschrijving: Login en form logic
-//-- Naam ontwikkelaar: Jordan van Eijl
+//-- Naam ontwikkelaar: JTnadrooi
 //-- Project: KlantOnderHoudsysteem
 //-- Datum: 28/03/2025
 //------------------------------------------------
