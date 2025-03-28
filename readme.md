@@ -1,3 +1,3 @@
-# Customer Support System made by Strahinja Zoranovic and Jordan van Eijl
+# Customer Support System made by Strahinja Zoranovic and JTnadrooi
 
 A school project.

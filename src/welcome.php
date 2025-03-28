@@ -9,13 +9,11 @@
 session_start();
 require 'db.php';
 
-// Redirect if the user is not logged in
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit;
 }
 
-// Retrieve the logged-in user's details
 $user_id = $_SESSION['user_id'];
 $sql = "SELECT * FROM users WHERE id = ?";
 $stmt = $conn->prepare($sql);
@@ -39,7 +37,6 @@ $currentUser = $result->fetch_assoc();
     <?php if ($currentUser && $currentUser['is_admin']): ?>
         <h2>All Users</h2>
         <?php
-        // Query to get all users
         $sql_all = "SELECT * FROM users";
         $result_all = $conn->query($sql_all);
         if ($result_all->num_rows > 0):

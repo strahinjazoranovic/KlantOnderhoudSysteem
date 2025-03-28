@@ -2,7 +2,7 @@
 //-----------------------------------------------
 //-- Naam script: login.php
 //-- Omschrijving: Login en form logic
-//-- Naam ontwikkelaar: Jordan van Eijl
+//-- Naam ontwikkelaar: JTnadrooi
 //-- Project: KlantOnderHoudsysteem
 //-- Datum: 28/03/2025
 //------------------------------------------------
@@ -10,25 +10,21 @@ session_start();
 require 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Get the form input
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Query the database for the user
     $sql = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // Check if user exists and password matches
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
-        if ($password == $user['password']) {  // In production, hash the password for security
-            // Store session data
+        if ($password == $user['password']) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['email'] = $user['email'];
-            header('Location: welcome.php');  // Redirect to welcome page
+            header('Location: welcome.php');
             exit;
         } else {
             echo "<p>Invalid password!</p>";
@@ -39,7 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
-<!-- HTML form for login -->
 <h1>Login</h1>
 <form method="POST">
     <label for="email">Email:</label>

@@ -2,7 +2,7 @@
 //-----------------------------------------------
 //-- Naam script: index.php  
 //-- Omschrijving: Landing page
-//-- Naam ontwikkelaar: Jordan van Eijl
+//-- Naam ontwikkelaar: JTnadrooi
 //-- Project: KlantOnderHoudsysteem
 //-- Datum: 28/03/2025
 //------------------------------------------------
