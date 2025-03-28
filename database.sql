@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2025 at 02:33 PM
+-- Generation Time: Mar 28, 2025 at 11:14 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 SET
@@ -31,17 +31,47 @@ SET
 --
 CREATE TABLE
   `users` (
-    `user_id` int (11) NOT NULL,
-    `customer_id` int (11) DEFAULT NULL,
+    `id` int (11) NOT NULL,
+    `name` varchar(255) NOT NULL,
     `email` varchar(255) NOT NULL,
-    `password_hash` varchar(255) NOT NULL,
-    `password_reset_token` varchar(255) DEFAULT NULL,
-    `reset_token_expiry` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-    `role
-` enum ('admin', 'employee', 'customer') DEFAULT 'customer',
-    `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-    `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+    `phone` varchar(20) DEFAULT NULL,
+    `address` text DEFAULT NULL,
+    `is_admin` tinyint (1) DEFAULT 0,
+    `password` varchar(255) NOT NULL
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+INSERT INTO
+  `users` (
+    `id`,
+    `name`,
+    `email`,
+    `phone`,
+    `address`,
+    `is_admin`,
+    `password`
+  )
+VALUES
+  (
+    3,
+    'John Doe',
+    'johndoe@example.com',
+    '123-456-7890',
+    '123 Main St, Anytown, USA',
+    1,
+    'password123'
+  ),
+  (
+    4,
+    'Jane Smith',
+    'janesmith@example.com',
+    '987-654-3210',
+    '456 Oak St, Sometown, USA',
+    0,
+    'mypassword'
+  );
 
 --
 -- Indexes for dumped tables
@@ -49,10 +79,8 @@ CREATE TABLE
 --
 -- Indexes for table `users`
 --
-ALTER TABLE `users` ADD PRIMARY KEY (`user_id`),
-ADD UNIQUE KEY `email` (`email`),
-ADD KEY `customer_id` (`customer_id`),
-ADD KEY `idx_users_email` (`email`);
+ALTER TABLE `users` ADD PRIMARY KEY (`id`),
+ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -60,15 +88,8 @@ ADD KEY `idx_users_email` (`email`);
 --
 -- AUTO_INCREMENT for table `users`
 --
-ALTER TABLE `users` MODIFY `user_id` int (11) NOT NULL AUTO_INCREMENT;
-
---
--- Constraints for dumped tables
---
---
--- Constraints for table `users`
---
-ALTER TABLE `users` ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`) ON DELETE CASCADE;
+ALTER TABLE `users` MODIFY `id` int (11) NOT NULL AUTO_INCREMENT,
+AUTO_INCREMENT = 5;
 
 COMMIT;
 
