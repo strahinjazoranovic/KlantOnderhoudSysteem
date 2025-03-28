@@ -1,5 +1,11 @@
 <?php
-// db.php: Database connection
+//-----------------------------------------------
+//-- Naam script: db.php
+//-- Omschrijving: Database connectie met alle gegevens 
+//-- Naam ontwikkelaar: Jordan van Eijl
+//-- Project: KlantOnderHoudsysteem
+//-- Datum: 28/03/2025
+//------------------------------------------------
 $host = 'localhost'; // Your database host
 $username = 'root';  // Your MySQL username
 $password = '';      // Your MySQL password

@@ -1,5 +1,11 @@
 <?php
-// login.php: Login form and logic
+//-----------------------------------------------
+//-- Naam script: login.php
+//-- Omschrijving: Login en form logic
+//-- Naam ontwikkelaar: Jordan van Eijl
+//-- Project: KlantOnderHoudsysteem
+//-- Datum: 28/03/2025
+//------------------------------------------------
 session_start();
 require 'db.php';
 
