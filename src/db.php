@@ -2,7 +2,7 @@
 //-----------------------------------------------
 //-- Naam script: db.php
 //-- Omschrijving: Database connectie met alle gegevens 
-//-- Naam ontwikkelaar: JTnadrooi
+//-- Naam ontwikkelaar: JTnadrooi en Strahinja Zoranovic
 //-- Project: KlantOnderHoudsysteem
 //-- Datum: 28/03/2025
 //------------------------------------------------
